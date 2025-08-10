@@ -6,7 +6,7 @@ AI-powered Temp Agency Platform for internships in Ethiopia – Front-end (React
 A brief description of what this project does and who it's for
 
 ## Installation and Setup
-```bash
+```bash 
 git clone https://github.com/nebiyuu1954/Temp-AI.git
 cd Temp-AI
 ```
