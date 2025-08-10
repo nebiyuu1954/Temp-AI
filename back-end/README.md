@@ -1,36 +1,16 @@
-# Temp-AI
-AI-powered Temp Agency Platform for internships in Ethiopia – Front-end (React/Vite) and Back-end (Django/MongoDB).
 
-# Temp AI Front-End
-
-A brief description of what this project does and who it's for
+# Temp AI Back-End
 
 ## Installation and Setup
+
 ```bash
 git clone https://github.com/nebiyuu1954/Temp-AI.git
 cd Temp-AI
 ```
-Navigate to the front-end directory:
-```bash
-cd front-end
-```
-Install dependencies:
-```bash
-npm install
-```
-Run the development server:
-```bash
-npm run dev
-```
-- Runs on http://localhost:5173
-    
-# Temp AI Back-End
 
-
-## Installation and Setup
 Navigate to the back-end directory:
 ```bash
-cd backend
+cd back-end
 ```
 
 Create and activate a virtual environment:
