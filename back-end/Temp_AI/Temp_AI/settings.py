@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,6 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    'users.apps.UsersConfig',
+    'rest_framework',
+    'djoser',
+    'rest_framework_simplejwt',
+    'django_filters',
+    'internships',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +128,45 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+AUTH_USER_MODEL = 'users.User'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+        
+    'DEFAULT_FILTER_BACKENDS': [
+         'django_filters.rest_framework.DjangoFilterBackend',
+         'rest_framework.filters.OrderingFilter',
+         'rest_framework.filters.SearchFilter',
+    ],
+    
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 2,
+     
+    'DEFAULT_THROTTLE_RATES':{
+        'anon': '100/minute',
+        'user': '100/minute',
+    }
+
+}
+
+SIMPLE_JWT = {
+    'AUTH_HEADER_TYPES': ('JWT',),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=30),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=180),
+}
+
+DJOSER = {
+    'USER_ID_FIELD': 'id',
+    'LOGIN_FIELD': 'email',
+    'USER_CREATE_PASSWORD_RETYPE': True,
+    'PASSWORD_RESET_CONFIRM_RETYPE': True,
+    'SERIALIZERS': {
+        'user_create': 'users.serializers.UserCreateSerializer',
+        'user': 'users.serializers.UserSerializer',
+        'current_user': 'users.serializers.UserSerializer',
+    },
+}

@@ -1,0 +1,103 @@
+{
+  "project": {
+    "name": "Temp Agency AI",
+    "description": "An AI-powered internship and job matching platform for Ethiopia that automates resume building, job posting, application management, and analytics for students, graduates, and employers.",
+    "team": [
+      "Nebiyou Esaiyas",
+      "Abuma Hinsene",
+      "Yonathan Bezuneh",
+      "Yoeph H/Mariam"
+    ]
+  },
+  "roles": {
+    "student_graduate": "Job seeker who creates a profile, builds resumes, and applies to jobs.",
+    "employer": "Posts vacancies, reviews applicants, and manages hiring.",
+    "admin": "Manages platform, roles, reports, and overall monitoring.",
+    "ai_engine": "Matches jobs to seekers, generates resumes, and recommends skills."
+  },
+  "apps": {
+    "users": {
+      "features": [
+        "Authentication & role-based access",
+        "User profile management (skills, education, background)",
+        "Admin account/role management"
+      ]
+    },
+    "internships": {
+      "features": [
+        "Job posting & management",
+        "Job matching (recommendations, match scores)",
+        "Application status tracking"
+      ]
+    },
+    "resumes": {
+      "features": [
+        "AI-powered resume builder",
+        "Template-based resume creation",
+        "Resume optimization & storage"
+      ]
+    },
+    "applications": {
+      "features": [
+        "Link candidates to internships",
+        "Track application lifecycle (submitted, shortlisted, accepted, rejected)",
+        "Employer feedback & candidate performance records"
+      ]
+    },
+    "notifications": {
+      "features": [
+        "Email, SMS, and in-app notifications",
+        "Real-time updates on deadlines, feedback, and status changes"
+      ]
+    },
+    "analytics": {
+      "features": [
+        "Employer dashboards (candidate performance, trends)",
+        "Admin insights (placement success, demand trends)",
+        "Reports & hiring analytics"
+      ]
+    }
+  },
+  "functional_requirements": [
+    "FR1: Allow job seekers to register and create profiles",
+    "FR2: Allow employers to register and post jobs",
+    "FR3: Provide AI-powered resume builder",
+    "FR4: Enable seekers to apply to jobs",
+    "FR5: Allow employers to review applications",
+    "FR6: Provide AI-based job recommendations to seekers",
+    "FR7: Provide AI-based candidate recommendations to employers",
+    "FR8: Send notifications for deadlines, application status, and feedback",
+    "FR9: Provide dashboards for seekers, employers, and admins",
+    "FR10: Allow admins to manage accounts and permissions",
+    "FR11: Generate analytics and reports"
+  ],
+  "non_functional_requirements": [
+    "NFR1: Role-based access control",
+    "NFR2: Secure storage of resumes and job postings",
+    "NFR3: Response time < 15s under normal load",
+    "NFR4: Support up to 200 concurrent users",
+    "NFR5: Web-based (Chrome, Firefox, Edge)",
+    "NFR6: Intuitive UI requiring minimal training",
+    "NFR7: Clear error messages",
+    "NFR8: 99% uptime",
+    "NFR9: AI resume generation in < 5 minutes",
+    "NFR10: Scalable for future modules (interview scheduling, skill assessments)"
+  ],
+  "use_cases": [
+    "UC1: Account Registration & Profile Setup",
+    "UC2: Login & Role-based Dashboard",
+    "UC3: Resume Builder",
+    "UC4: Post Job",
+    "UC5: Apply to Job",
+    "UC6: AI Job Matching",
+    "UC7: AI Candidate Matching",
+    "UC8: Notifications & Alerts",
+    "UC9: Manage Accounts",
+    "UC10: Generate Reports & Analytics",
+    "UC11: Interview Scheduling",
+    "UC12: Application Status Tracking",
+    "UC13: Employer Shortlisting",
+    "UC14: Messaging System",
+    "UC15: Feedback & Ratings"
+  ]
+}
