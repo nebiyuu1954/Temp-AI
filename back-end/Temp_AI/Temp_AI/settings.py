@@ -38,18 +38,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
+    'corsheaders',
     'users.apps.UsersConfig',
     'rest_framework',
     'djoser',
     'rest_framework_simplejwt',
     'django_filters',
-    'internships',
     'drf_yasg',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -171,3 +172,7 @@ DJOSER = {
         'current_user': 'users.serializers.UserSerializer',
     },
 }
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+]
