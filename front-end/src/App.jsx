@@ -9,6 +9,7 @@ import EmployerLandingPage from "./pages/Employer/EmployerLandingPage";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
 import { SidebarProvider } from "./context/SidebarContext";
+import MyApplications from "./pages/Applicant/MyApplicationsPage";
 
 function App() {
   return (
@@ -30,6 +31,15 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route
+              path="/applications"
+              element={
+                <ProtectedRoute>
+                  <MyApplications />
+                </ProtectedRoute>
+              }
+            />
+            
 
             {/* Unauthorized fallback */}
             <Route path="/unauthorized" element={<h2>Unauthorized</h2>} />
