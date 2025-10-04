@@ -95,16 +95,16 @@ const ApplicantLandingPage = () => {
               <table className="flex-1">
                 <thead>
                   <tr className="bg-[#f8f9fc]">
-                    <th className="table-column-120 px-4 py-3 text-left text-[#0d121c] w-[400px] text-sm font-medium leading-normal">
+                    <th className="px-4 py-3 text-left text-[#0d121c] w-[400px] text-sm font-medium leading-normal">
                       {t('sidebar.jobs')}
                     </th>
-                    <th className="table-column-240 px-4 py-3 text-left text-[#0d121c] w-[400px] text-sm font-medium leading-normal">
+                    <th className="px-4 py-3 text-left text-[#4b679b] w-[400px] text-sm font-medium leading-normal">
                       {t('sidebar.candidates')}
                     </th>
-                    <th className="table-column-360 px-4 py-3 text-left text-[#0d121c] w-[400px] text-sm font-medium leading-normal">
+                    <th className="px-4 py-3 text-left text-[#4b679b] w-[400px] text-sm font-medium leading-normal">
                       {t('landing.date')}
                     </th>
-                    <th className="table-column-480 px-4 py-3 text-left text-[#0d121c] w-60 text-sm font-medium leading-normal">
+                    <th className="px-4 py-3 text-left text-[#4b679b] w-60 text-sm font-medium leading-normal">
                       {t('landing.status')}
                     </th>
                   </tr>
@@ -112,16 +112,16 @@ const ApplicantLandingPage = () => {
                 <tbody>
                   {recentApplications.map((application, index) => (
                     <tr key={index} className="border-t border-t-[#cfd8e8]">
-                      <td className="table-column-120 h-[72px] px-4 py-2 w-[400px] text-[#0d121c] text-sm font-normal leading-normal">
+                      <td className="h-[72px] px-4 py-2 w-[400px] text-[#0d121c] text-sm font-normal leading-normal">
                         {application.jobTitle}
                       </td>
-                      <td className="table-column-240 h-[72px] px-4 py-2 w-[400px] text-[#4b679b] text-sm font-normal leading-normal">
+                      <td className="h-[72px] px-4 py-2 w-[400px] text-[#4b679b] text-sm font-normal leading-normal">
                         {application.company}
                       </td>
-                      <td className="table-column-360 h-[72px] px-4 py-2 w-[400px] text-[#4b679b] text-sm font-normal leading-normal">
+                      <td className="h-[72px] px-4 py-2 w-[400px] text-[#4b679b] text-sm font-normal leading-normal">
                         {application.date}
                       </td>
-                      <td className="table-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
+                      <td className="h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
                         <button
                           className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#e7ebf3] text-[#0d121c] text-sm font-medium leading-normal w-full"
                         >

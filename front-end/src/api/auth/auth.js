@@ -2,6 +2,9 @@ import axios from "axios";
 
 const API = axios.create({
   baseURL: "http://localhost:8000",
+  headers: {
+    'Content-Type': 'application/json',
+  },
 });
 
 // Attach token automatically
@@ -22,6 +25,7 @@ export const verify = (token) => API.post("/auth/jwt/verify/", { token });
 // User endpoints
 export const register = (data) => API.post("/auth/users/", data);
 export const getMe = () => API.get("/auth/users/me/");
+export const patchMe = (data) => API.patch("/auth/users/me/", data);
 export const getUsers = () => API.get("/auth/users/");
 export const getUser = (id) => API.get(`/auth/users/${id}/`);
 export const updateUser = (id, data) => API.put(`/auth/users/${id}/`, data);

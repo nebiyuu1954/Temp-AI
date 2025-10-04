@@ -1,3 +1,4 @@
+import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Login from "./pages/Auth/Login/Login";
@@ -13,10 +14,16 @@ import AllApplicants from "./pages/Employer/ManageJobs/AllApplicants";
 import ApplicantDetail from "./pages/Employer/ManageJobs/ApplicantDetail";
 import Analytics from "./pages/Employer/Analytics/Analytics";
 import PostJobs from "./pages/Employer/PostJob/PostJobs";
-// import ProfilePage from "./pages/ProfilePage";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
 import { SidebarProvider } from "./context/SidebarContext";
+import MyApplications from "./pages/Applicant/Application/MyApplicationsPage";
+import RecommendedPage from "./pages/Applicant/Internship/InternshipsPage";
+import ResumeBuilderPage from "./pages/Applicant/Resume/ResumeBuilderPage";
+
+const LazyProfile = lazy(() => import("./pages/Profile/Profile"));
+const LazyNotifications = lazy(() => import("./pages/Notifications/Notifications"));
+const LazyAnalytics = lazy(() => import("./pages/Employer/Analytics/Analytics"));
 
 function App() {
   return (
@@ -29,6 +36,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/analytics" element={<Analytics />} />
+
             {/* Protected routes */}
             <Route
               path="/dashboard"
@@ -38,6 +46,8 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
+            {/* Employer routes */}
             <Route
               path="/manage-jobs"
               element={
@@ -86,9 +96,64 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route path="/post-job" element={<PostJobs />} />
+
+            {/* Applicant routes */}
             <Route
-              path="/post-job"
-              element={<PostJobs />}
+              path="/internships"
+              element={
+                <ProtectedRoute>
+                  <RecommendedPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/applications"
+              element={
+                <ProtectedRoute>
+                  <MyApplications />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/resume"
+              element={
+                <ProtectedRoute>
+                  <ResumeBuilderPage />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Shared / Lazy-loaded routes */}
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <LazyProfile />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/notifications"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <LazyNotifications />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/analytics-lazy"
+              element={
+                <ProtectedRoute requiredRole="EMPLOYER">
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <LazyAnalytics />
+                  </Suspense>
+                </ProtectedRoute>
+              }
             />
 
             {/* Unauthorized fallback */}

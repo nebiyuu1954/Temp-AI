@@ -61,7 +61,9 @@
     "about": "About",
     "contact": "Contact",
     "terms": "Terms",
-    "copyright": "© 2024 InternLink. All rights reserved."
+    "copyright": "© 2024 InternLink. All rights reserved.",
+    "status": "Status",
+    "date": "Date"
   },
   "header": {
     "internLink": "InternLink",
@@ -91,5 +93,40 @@
     "jobs": "Jobs",
     "candidates": "Candidates",
     "analytics": "Analytics"
+  },
+  "profile": {
+    "personalInformation": "Personal Information",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "phoneNumber": "Phone Number",
+    "dateOfBirth": "Date of Birth",
+    "education": "Education",
+    "educationLevel": "Education Level",
+    "skills": "Skills",
+    "certifications": "Certifications",
+    "achievements": "Achievements",
+    "professionalSummary": "Professional Summary",
+    "companyInformation": "Company Information",
+    "companyName": "Company Name",
+    "companyDescription": "Company Description",
+    "companyWebsite": "Company Website",
+    "companySize": "Company Size",
+    "industry": "Industry",
+    "address": "Address",
+    "contactInformation": "Contact Information",
+    "visibleToEmployers": "Visible to Employers",
+    "visibleToApplicants": "Visible to Applicants",
+    "saveProfile": "Save Profile",
+    "employerViewPreview": "Employer View Preview",
+    "applicantViewPreview": "Applicant View Preview",
+    "name": "Name",
+    "contact": "Contact",
+    "description": "Description",
+    "website": "Website",
+    "size": "Size",
+    "noChangesDetected": "No changes detected",
+    "profileUpdatedSuccessfully": "Profile updated successfully!",
+    "serverError": "Server error",
+    "unknownRole": "Unknown role"
   }
 }
