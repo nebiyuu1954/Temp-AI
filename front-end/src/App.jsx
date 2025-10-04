@@ -6,7 +6,14 @@ import { SignUp } from "./pages/Auth/SignUp/SignUp";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import ApplicantLandingPage from "./pages/Applicant/ApplicantLandingPage";
 import EmployerLandingPage from "./pages/Employer/EmployerLandingPage";
-// import ProfilePage from "./pages/ProfilePage";
+import CandidateManagement from "./pages/Employer/Candidate/CandidateManagement";
+import CandidateListing from "./pages/Employer/Candidate/CandidateListing";
+import CandidateDetail from "./pages/Employer/Candidate/CandidateDetail";
+import ManageJob from "./pages/Employer/ManageJobs/ManageJob";
+import AllApplicants from "./pages/Employer/ManageJobs/AllApplicants";
+import ApplicantDetail from "./pages/Employer/ManageJobs/ApplicantDetail";
+import Analytics from "./pages/Employer/Analytics/Analytics";
+import PostJobs from "./pages/Employer/PostJob/PostJobs";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
 import { SidebarProvider } from "./context/SidebarContext";
@@ -14,9 +21,9 @@ import MyApplications from "./pages/Applicant/Application/MyApplicationsPage";
 import RecommendedPage from "./pages/Applicant/Internship/InternshipsPage";
 import ResumeBuilderPage from "./pages/Applicant/Resume/ResumeBuilderPage";
 
-const LazyProfile = lazy(() => import('./pages/Profile/Profile'));
-const LazyNotifications = lazy(() => import('./pages/Notifications/Notifications'));
-const LazyAnalytics = lazy(() => import('./pages/Employer/Analytics/Analytics'));
+const LazyProfile = lazy(() => import("./pages/Profile/Profile"));
+const LazyNotifications = lazy(() => import("./pages/Notifications/Notifications"));
+const LazyAnalytics = lazy(() => import("./pages/Employer/Analytics/Analytics"));
 
 function App() {
   return (
@@ -28,6 +35,7 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/analytics" element={<Analytics />} />
 
             {/* Protected routes */}
             <Route
@@ -38,6 +46,59 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
+            {/* Employer routes */}
+            <Route
+              path="/manage-jobs"
+              element={
+                <ProtectedRoute>
+                  <ManageJob />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/all-applicants"
+              element={
+                <ProtectedRoute>
+                  <AllApplicants />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/applicant-detail"
+              element={
+                <ProtectedRoute>
+                  <ApplicantDetail />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/candidates/management"
+              element={
+                <ProtectedRoute>
+                  <CandidateManagement />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/candidates/listing"
+              element={
+                <ProtectedRoute>
+                  <CandidateListing />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/candidates/detail"
+              element={
+                <ProtectedRoute>
+                  <CandidateDetail />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/post-job" element={<PostJobs />} />
+
+            {/* Applicant routes */}
             <Route
               path="/internships"
               element={
@@ -62,6 +123,8 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
+            {/* Shared / Lazy-loaded routes */}
             <Route
               path="/profile"
               element={
@@ -83,7 +146,7 @@ function App() {
               }
             />
             <Route
-              path="/analytics"
+              path="/analytics-lazy"
               element={
                 <ProtectedRoute requiredRole="EMPLOYER">
                   <Suspense fallback={<div>Loading...</div>}>
