@@ -1,3 +1,4 @@
+import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Login from "./pages/Auth/Login/Login";
@@ -9,9 +10,13 @@ import EmployerLandingPage from "./pages/Employer/EmployerLandingPage";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
 import { SidebarProvider } from "./context/SidebarContext";
-import MyApplications from "./pages/Applicant/MyApplicationsPage";
-import RecommendedPage from "./pages/Applicant/RecommendedPage";
-import ResumeBuilderPage from "./pages/Applicant/ResumeBuilderPage";
+import MyApplications from "./pages/Applicant/Application/MyApplicationsPage";
+import RecommendedPage from "./pages/Applicant/Internship/InternshipsPage";
+import ResumeBuilderPage from "./pages/Applicant/Resume/ResumeBuilderPage";
+
+const LazyProfile = lazy(() => import('./pages/Profile/Profile'));
+const LazyNotifications = lazy(() => import('./pages/Notifications/Notifications'));
+const LazyAnalytics = lazy(() => import('./pages/Employer/Analytics/Analytics'));
 
 function App() {
   return (
@@ -34,6 +39,14 @@ function App() {
               }
             />
             <Route
+              path="/internships"
+              element={
+                <ProtectedRoute>
+                  <RecommendedPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
               path="/applications"
               element={
                 <ProtectedRoute>
@@ -50,14 +63,35 @@ function App() {
               }
             />
             <Route
-              path="/recommended"
+              path="/profile"
               element={
                 <ProtectedRoute>
-                  <RecommendedPage />
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <LazyProfile />
+                  </Suspense>
                 </ProtectedRoute>
               }
             />
-            
+            <Route
+              path="/notifications"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <LazyNotifications />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/analytics"
+              element={
+                <ProtectedRoute requiredRole="EMPLOYER">
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <LazyAnalytics />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
 
             {/* Unauthorized fallback */}
             <Route path="/unauthorized" element={<h2>Unauthorized</h2>} />
