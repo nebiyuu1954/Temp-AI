@@ -84,7 +84,7 @@ class ApplicantProfile(models.Model):
         related_name='applicantprofile',
         limit_choices_to={'role': User.Role.APPLICANT}
     )
-    first_name = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=105)
     last_name = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=15)
     date_of_birth = models.DateField(null=True, blank=True)
@@ -93,6 +93,10 @@ class ApplicantProfile(models.Model):
     resume = models.FileField(upload_to='resumes/', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    certifications = models.TextField(blank=True)
+    achievements = models.TextField(blank=True)
+    professional_summary = models.TextField(blank=True)
+
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
