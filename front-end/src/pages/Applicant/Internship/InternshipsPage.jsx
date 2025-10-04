@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
-import { Header } from '../../components/header/Header';
-import Sidebar from '../../components/sidebar/Sidebar';
-import { AuthContext } from '../../context/AuthContext';
-import { useSidebar } from '../../context/SidebarContext';
+import { Header } from '../../../components/header/Header';
+import Sidebar from '../../../components/sidebar/Sidebar';
+import { AuthContext } from '../../../context/AuthContext';
+import { useSidebar } from '../../../context/SidebarContext';
 import { useTranslation } from 'react-i18next';
 
 const RecommendedPage = () => {
