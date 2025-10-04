@@ -1,13 +1,15 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { useTranslation } from 'react-i18next';
+import { Link, useLocation } from 'react-router-dom';
 
 const Sidebar = () => {
   const { user } = useContext(AuthContext);
   const { t } = useTranslation();
+  const location = useLocation(); // Get current route
 
   const applicantMenuItems = [
-    { label: t('sidebar.dashboard'), href: '/dashboard', icon: 'House', active: true },
+    { label: t('sidebar.dashboard'), href: '/dashboard', icon: 'House' },
     { label: t('sidebar.recommendedInternships'), href: '/recommended', icon: 'Briefcase' },
     { label: t('sidebar.myApplications'), href: '/applications', icon: 'File' },
     { label: t('sidebar.resumeBuilder'), href: '/resume', icon: 'PencilSimple' },
@@ -16,7 +18,7 @@ const Sidebar = () => {
   ];
 
   const employerMenuItems = [
-    { label: t('sidebar.dashboard'), href: '/dashboard', icon: 'House', active: true },
+    { label: t('sidebar.dashboard'), href: '/dashboard', icon: 'House' },
     { label: t('sidebar.jobs'), href: '/jobs', icon: 'Briefcase' },
     { label: t('sidebar.candidates'), href: '/candidates', icon: 'Users' },
     { label: t('sidebar.analytics'), href: '/analytics', icon: 'ChartBar' },
@@ -75,22 +77,20 @@ const Sidebar = () => {
     <div className="layout-content-container flex flex-col w-80 ml-2 mt-2">
       <div className="flex h-full min-h-[700px] flex-col justify-between bg-[#f8f9fc] p-4">
         <div className="flex flex-col gap-4">
-          <div className="flex flex-col gap-2">
-            {menuItems.map((item, index) => (
-              <a
-                key={index}
-                href={item.href}
-                className={`flex items-center gap-3 px-3 py-2 rounded-lg ${
-                  item.active ? 'bg-[#e7ebf3]' : ''
+          {menuItems.map((item, index) => (
+            <Link
+              key={index}
+              to={item.href}
+              className={`flex items-center gap-3 px-3 py-2 rounded-lg ${
+                location.pathname === item.href ? 'bg-[#e7ebf3]' : ''
                 } hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200`}
-              >
-                <div className="text-[#0d121c]" data-icon={item.icon} data-size="24px" data-weight="regular">
-                  {getIcon(item.icon)}
-                </div>
-                <p className="text-[#0d121c] text-sm font-medium leading-normal">{item.label}</p>
-              </a>
-            ))}
-          </div>
+            >
+              <div className="text-[#0d121c]" data-icon={item.icon} data-size="24px" data-weight="regular">
+                {getIcon(item.icon)}
+              </div>
+              <p className="text-[#0d121c] text-sm font-medium leading-normal">{item.label}</p>
+            </Link>
+          ))}
         </div>
       </div>
     </div>
